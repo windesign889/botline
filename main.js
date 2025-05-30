@@ -69,8 +69,28 @@ function checkData(reply_token, message) {
     const stLotto = sheet.getRange("G40").getValue();
     const stPro = sheet.getRange("G41").getValue();
     const stadd = sheet.getRange("G42").getValue();
+
+    
   //============ชุดข้อมูลที่เพิ่มเข้ามาใหม่ ======================
-    const rep = ws.getSheetByName("replyranlot");
+  const rep = ws.getSheetByName("replyranlot");
+  const lottoData = rep.getRange(2, 1, rep.getLastRow(), sheet.getLastColumn()).getDisplayValues();
+  
+  for(let i = 0; i < lottoData.length; i++){
+    const keyword = lottoData[i][0]; //คอลัม A 
+    const image = lottoData[i][1];//คอลัม B
+    const nameData = lottoData[i][2];//คอลัม C
+    const box1 = lottoData[i][3];//คอลัม D
+    const box2 = lottoData[i][4];//คอลัม E
+    const box3 = lottoData[i][5];//คอลัม F
+    
+    if(keyword === message){
+      result = { /* เอา flex มาใส่*/};
+      found = true;
+      break;
+      
+    }
+  }
+
   Logger.log(rep)
   //=========== สิ้นสุดข้อมูล =================
 
